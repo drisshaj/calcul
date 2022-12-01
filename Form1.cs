@@ -6,9 +6,10 @@ namespace calcul
         {
             InitializeComponent();
         }
-        float num1, ans;
+        float num1, num2;
         int count;
 
+       
         private void button3_Click(object sender, EventArgs e)
         {
             textBox1.Text = textBox1.Text + 9;
@@ -93,27 +94,81 @@ namespace calcul
 
         private void button20_Click(object sender, EventArgs e)
         {
+            
             compute(count);
+        }
+        private void Form1_Keypress(object sender, KeyEventArgs e)
+        {
+
+            if (e.Control && e.KeyCode == Keys.Enter)
+            {
+                button20.PerformClick();
+                compute(count);
+            }
+            if (e.Control && e.KeyCode == Keys.Add)
+            {
+                button13.PerformClick();
+                num1 = float.Parse(textBox1.Text);
+                textBox1.Clear();
+                textBox1.Focus();
+                count = 2;
+            }
+
+            if (e.Control && e.KeyCode == Keys.Subtract)
+            {
+                if (textBox1.Text != "")
+                {
+
+                    button17.PerformClick();
+                    num1 = float.Parse(textBox1.Text);
+                    textBox1.Clear();
+                    textBox1.Focus();
+                    count = 1;
+                }
+            }
+            if (e.Control && e.KeyCode == Keys.Divide)
+            {
+                button5.PerformClick();
+                num1 = float.Parse(textBox1.Text);
+                textBox1.Clear();
+                textBox1.Focus();
+                count = 3;
+
+            }
+
+            if (e.Control && e.KeyCode == Keys.Multiply)
+            {
+
+            button9.PerformClick();
+            num1 = float.Parse(textBox1.Text);
+            textBox1.Clear();
+            textBox1.Focus();
+            count = 3;
+            }
+
+
+
+
         }
         public void compute(int count)
         {
             switch (count)
             {
                 case 1:
-                    ans = num1 - float.Parse(textBox1.Text);
-                    textBox1.Text = ans.ToString();
+                    num2 = num1 - float.Parse(textBox1.Text);
+                    textBox1.Text = num2.ToString();
                     break;
                 case 2:
-                    ans = num1 + float.Parse(textBox1.Text);
-                    textBox1.Text = ans.ToString();
+                    num2 = num1 + float.Parse(textBox1.Text);
+                    textBox1.Text = num2.ToString();
                     break;
                 case 3:
-                    ans = num1 * float.Parse(textBox1.Text);
-                    textBox1.Text = ans.ToString();
+                    num2 = num1 * float.Parse(textBox1.Text);
+                    textBox1.Text = num2.ToString();
                     break;
                 case 4:
-                    ans = num1 / float.Parse(textBox1.Text);
-                    textBox1.Text = ans.ToString();
+                    num2 = num1 / float.Parse(textBox1.Text);
+                    textBox1.Text = num2.ToString();
                     break;
                 default:
                     break;
@@ -138,7 +193,8 @@ namespace calcul
             textBox1.Clear();
             textBox1.Focus();
             count = 2;
-
+          
         }
+       
     }
 }
